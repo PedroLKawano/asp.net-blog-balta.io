@@ -15,11 +15,11 @@ namespace Blog.Controllers
             try
             {
                 var categories = await context.Categories.ToListAsync();
-                return Ok(categories);
+                return Ok(new ResultViewModel<List<Category>>(categories));
             }
-            catch (Exception ex)
+            catch
             {
-                return StatusCode(500, "05XE4 - Falha interna no servidor");
+                return StatusCode(500, new ResultViewModel<List<Category>>("05XE4 - Falha interna no servidor"));
             }
         }
 
